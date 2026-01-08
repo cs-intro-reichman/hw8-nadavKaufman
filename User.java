@@ -56,16 +56,14 @@
     public boolean addFollowee(String name) {
          if(fCount == maxfCount)
          {
-            System.out.println("follow list is full");
             return false;
          }
          if(follows(name))
          {
-            System.out.println("allready followed");
             return false;
         }
             follows[fCount] = name;
-            System.out.println("added succesfully");
+
             fCount ++;
             return true;
     }
@@ -79,27 +77,27 @@
         while(i < fCount && find)
         {
             if(follows[i].equals(name))
-                find = false;
-            i++;
+               {
+               find = false;
+            break;  
+            }
+               i++;
         }
         if(find)
            {
-             System.out.println("doesn't exist");// אולי יפריע לבדיקה
+            
                          return false;
            }
-           if(i < fCount-1)
+           if(i < fCount)
            {
-            for(int j = i-1; j < fCount-1 ; j++ )
+            for(int j = i; j < fCount-1 ; j++ )
            {
             follows[j] = follows[j+1];
            }
            fCount--;
            follows[fCount] = null;
         }
-        if(i == fCount)
-        {
-          follows[i] = null;  
-        }
+       
         return true;
     }
 
